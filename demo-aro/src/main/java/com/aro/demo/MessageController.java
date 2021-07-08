@@ -20,13 +20,13 @@ public class MessageController {
          return new RedirectView("/swagger-ui.html");
     }
 
-    @GetMapping("/messages")
-    public HashMap<String, String> getMessage() {
+    @GetMapping("/logmessage")
+    public HashMap<String, String> setMessage(@RequestParam(name="env", required=false, defaultValue="AKS") String env) {
         
         HashMap<String, String> map = new HashMap<String, String>();
         map.put("key", "value");
         map.put("foo", "bar");
-        map.put("message", "Logging Test Azure Red Hat Openshift - Azure Monitor.");
+        map.put("message", "Logging for " + env + " - Azure Monitor.");
         log.info(map.get("message"));
         return map;
     }
@@ -37,13 +37,13 @@ public class MessageController {
         return greeting;
 	}
 
-    @GetMapping("/exception1")
+    @GetMapping("/exception-aks")
     public void getException1() throws Exception {
         log.info("First custom exception");
-        throw new Exception("Azure Monitor, First custom exception ARO");
+        throw new Exception("Azure Monitor, First custom exception AKS");
     }
 
-    @GetMapping("/exception2")
+    @GetMapping("/exception-aro")
     public void getException2() throws Exception {
         log.info("Second custom exception");
         throw new Exception("Azure Monitor, Second custom exception ARO");

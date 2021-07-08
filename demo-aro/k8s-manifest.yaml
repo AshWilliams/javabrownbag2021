@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: spring-demo
-        image: ashwilliams/aro-spring-log:v3
+        image: ashwilliams/aro-spring-log:v4
         resources:
           requests:
             memory: "300Mi"
